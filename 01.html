@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>全选与反选</title>
+  <style>
+  *{
+    padding: 0;
+    margin: 0;
+  }
+  .dv{
+    width: 400px;
+    margin: 100px auto 0;
+    background-color: #aca;
+  }
+  table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2px solid #fe0;
+    width: 400px;
+  }
+  th,td{
+    border: 2px solid #ae3;
+    color: #bbb;
+    padding: 10px;
+  }
+  th{
+    background-color: ##ae3;
+    font:bold 18px '微软雅黑';
+    color: #e22;
+  }
+  tbody tr {
+    background-color: #f44;
+  }
+  tbody tr:hover{
+    cursor: pointer;
+    background-color: #cc6;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="dv">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <input type="checkbox" id="j_cbAll">
+          </th>
+          <th>姓名</th>
+          <th>国籍</th>
+        </tr>
+      </thead>
+      <tbody id="j_tb">
+        <tr>
+          <td>
+            <input type="checkbox">
+          </td>
+          <td>小花</td>
+          <td>中国</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox">
+          </td>
+          <td>小浪</td>
+          <td>吉尔吉斯斯坦</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox">
+          </td>
+          <td>小叶</td>
+          <td>巴基斯坦</td>
+        <tr>
+          <td>
+            <input type="checkbox">
+          </td>
+          <td>小月</td>
+          <td>厄瓜多尔</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    var all = document.getElementById('j_cbAll');
+    var tb = document.getElementById('j_tb');
+    var checkboxs = tb.getElementsByTagName('input');
+    all.onclick =   function(){
+        for (var i = 0; i < checkboxs.length; i++) {
+          checkboxs[i].checked = all.checked;
+        }
+      };
+      for (var i = 0; i < checkboxs.length; i++) {
+        checkboxs[i].onclick = function(){
+            var isCheckedAll = true;
+            for (var i = 0; i < checkboxs.length; i++) {
+              if(checkboxs[i].checked !== true){
+                isCheckedAll = false;
+                break;
+              }
+            }
+            all.checked = isCheckedAll;
+          };
+        
+      }
+    
+  </script>
+</body>
+</html>
